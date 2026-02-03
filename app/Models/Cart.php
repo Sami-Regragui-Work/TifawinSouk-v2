@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
-    /** @use HasFactory<\Database\Factories\CartFactory> */
     use HasFactory;
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
