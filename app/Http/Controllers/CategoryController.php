@@ -16,5 +16,19 @@ class CategoryController extends Controller
         return view('admin.categories.create');
     }
 
+    public function store(Request $request){
+        $request->validate([
+            'title' => 'required|max:255' ,
+            'description' => 'nullable' ,
+        ]);
+
+        Category::create([
+            'title' => $request->title, 
+            'description' => $request->description,
+        ]);
+
+        return redirect('/categories') ;
+    }
+
     
 }

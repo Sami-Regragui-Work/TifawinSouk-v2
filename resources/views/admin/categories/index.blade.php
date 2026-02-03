@@ -16,7 +16,7 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>nom category </th>
+                <th>title</th>
                 <th>descreption</th>
                 <th>action</th>
             </tr>
@@ -25,7 +25,7 @@
             @foreach($categories as $category)
             <tr>
                 <td>{{ $category->id }}</td>
-                <td><strong>{{ $category->nom }}</strong></td>
+                <td><strong>{{ $category->title }}</strong></td>
                 <td>{{ $category->description ?? 'ne pas de description' }}</td>
             </tr>
             @endforeach
