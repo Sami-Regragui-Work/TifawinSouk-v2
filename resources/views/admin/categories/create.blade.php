@@ -5,8 +5,7 @@
                             margin-bottom: 20px;
                             font-size: 22px;
                         }
-
-                       
+                        
                         .form {
                             display: flex;
                             flex-direction: column;
@@ -18,20 +17,20 @@
                             border-radius: 6px;
                         }
 
-                      
+                        
                         .form > div {
                             display: flex;
                             flex-direction: column;
                             gap: 5px;
                         }
-
+                        
                         
                         .form label {
                             font-weight: bold;
                             font-size: 14px;
                         }
-
-                       
+                        
+                        
                         .form input,
                         .form textarea {
                             padding: 8px;
@@ -40,13 +39,23 @@
                             font-size: 14px;
                         }
 
-                       
+                        
                         .form textarea {
                             resize: vertical;
                             min-height: 80px;
                         }
-
-                       
+                        
+                        .btn-anuller{
+                            align-self: flex-start;
+                            padding: 8px 16px;
+                            background-color: #5cb7b8;
+                            color: white;
+                            border: none;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            font-size: 14px;
+                        }
+                        
                         .btn {
                             align-self: flex-start;
                             padding: 8px 16px;
@@ -57,12 +66,14 @@
                             cursor: pointer;
                             font-size: 14px;
                         }
-
+                        
                         .btn:hover {
                             background-color: #449d44;
                         }
+                        
+                        
 
-</style>
+                    </style>
 <h2  class="title">add category</h2>
 <form class="form" action="{{ route('categories.store') }}" method="POST">
     @csrf
@@ -75,6 +86,9 @@
         <label>Description</label>
         <textarea name="description"></textarea>
     </div>
-    
-    <button class="btn" type="submit">add Category</button>
+     
+    <div >
+        <a class="btn-anuller"href="{{ url('/categories') }}">anuller</a>
+        <button class="btn" type="submit">add Category</button>
+    </div>
 </form>
