@@ -8,8 +8,10 @@
 </head>
 <body>
 
-    <h1> (Categories)</h1>
-
+    <h1>Categories</h1>
+    <div>
+        <a href="{{ url('/categories/create') }}">add category</a>
+    </div>
     <table>
         <thead>
             <tr>
