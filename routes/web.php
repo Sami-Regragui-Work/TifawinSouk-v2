@@ -10,4 +10,3 @@ Route::get('/', function () {
 
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/categories/create', [CategoryController::class, 'create']);
-Route::post('/categories/store', [CategoryController::class, 'store'])->name('categories.store');

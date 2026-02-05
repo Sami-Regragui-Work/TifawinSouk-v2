@@ -2,7 +2,7 @@
     @csrf
     <div>
         <label>nom Category</label>
-        <input type="text" name="title" required>
+        <input type="text" name="nom" required>
     </div>
     
     <div>
