@@ -8,10 +8,14 @@ use App\Models\User;
 
 class Cart extends Model
 {
-    public function user():belongsTo{
+    use HasFactory;
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
     
-    /** @use HasFactory<\Database\Factories\CartFactory> */
-    use HasFactory;
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
