@@ -141,12 +141,13 @@
                 <td>
                         <a href="{{ route('categories.edit', $category->id) }}" class="btn-edit">edite</a> | 
 
-                        <form  method="POST" style="display:inline;">
+                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST" style="display:inline;">
                             @csrf
                             <button class="btn-delete" type="submit" onclick="return confirm('delete ?')" >
                                 delete
                             </button>
                         </form>
+
                </td>
             </tr>
             @endforeach
