@@ -139,7 +139,7 @@
                 <td>{{ $category->description ?? 'ne pas de description' }}</td>
                 </td>
                 <td>
-                        <a class="btn-edit">edite</a> | 
+                        <a href="{{ route('categories.edit', $category->id) }}" class="btn-edit">edite</a> | 
 
                         <form  method="POST" style="display:inline;">
                             @csrf
