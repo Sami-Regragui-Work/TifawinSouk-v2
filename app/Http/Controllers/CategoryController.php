@@ -1,0 +1,61 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Category;
+use Illuminate\Http\Request;
+
+class CategoryController extends Controller
+{
+    public function index(){
+        $categories = Category::all();
+        return view('admin.categories.index', compact('categories'));
+    }
+
+    public function create(){
+        return view('admin.categories.create');
+    }
+
+    public function store(Request $request){
+
+        $request->validate([
+            'title' => 'required|max:255' ,
+            'description' => 'nullable' ,
+        ]);
+
+        Category::create([
+            'title' => $request->title, 
+            'description' => $request->description,
+        ]);
+
+        return redirect('/categories') ;
+    }
+
+    public function edit($id){
+        $category = category::FindOrFail($id);
+        return view('admin.categories.edit', compact('category'));
+    }
+
+    public function update(request $request ,$id){
+             $category = category::FindOrFail($id) ;
+
+             $validated = $request->validate([
+                  'title' => 'required' ,
+                  'description' => 'nullable'
+             ]);
+
+            $category->update($validated);
+            return redirect('/categories');
+    }
+
+    public function destroy($id){
+    
+           $category = category::FindOrFail($id);
+
+           $category->delete();
+           return redirect('/categories');
+           
+    }
+
+    
+}
