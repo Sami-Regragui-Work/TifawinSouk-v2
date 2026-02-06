@@ -17,6 +17,7 @@ class CategoryController extends Controller
     }
 
     public function store(Request $request){
+
         $request->validate([
             'title' => 'required|max:255' ,
             'description' => 'nullable' ,
@@ -28,6 +29,11 @@ class CategoryController extends Controller
         ]);
 
         return redirect('/categories') ;
+    }
+
+    public function edit($id){
+        $category = category::FindOrFail($id);
+        return view('admin.categories.edit', compact('category'));
     }
 
     
