@@ -88,9 +88,6 @@
         <textarea name="description">{{ $category->description }}</textarea>
     </div>
 
-    <div class="form-actions">
-            <button class="btn-edit" type="submit">edite</button>
-            <a class="btn-anuller" href="{{ url('/categories') }}">anuller</a>
-    </div>
-
+    <button class="btn-edit" type="submit" >edite</button>
+    <a class="btn-anuller" href="{{ url('/categories') }}">anuller</a>
 </form>
