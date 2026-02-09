@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Client\OrderController as ClientOrderController;
 
 use App\Http\Controllers\CategoryController;
 
@@ -52,4 +54,25 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// sami
+
+Route::middleware(['auth'])->prefix('client')->name('client.')->group(function () {
+    Route::prefix('orders')->name('orders.')->group(function () {
+        Route::get('/', [ClientOrderController::class, 'index'])->name('index');
+        Route::post('/', [ClientOrderController::class, 'store'])->name('store');
+        Route::prefix('{order}')->group(function () {
+            Route::get('/', [ClientOrderController::class, 'show'])->name('show');
+            Route::delete('/', [ClientOrderController::class, 'destroy'])->name('destroy');
+        })->middleware('owns.order:order');
+    });
+});
+
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::prefix('orders')->name('orders.')->group(function () {
+        Route::get('/', [AdminOrderController::class, 'index'])->name('index');
+        Route::get('/{order}', [AdminOrderController::class, 'show'])->name('show');
+    });
+});
+
 require __DIR__.'/auth.php';
+
