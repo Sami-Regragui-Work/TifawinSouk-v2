@@ -31,11 +31,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required',
+            'name' => 'required|min:3',
             'email' => 'required|email',
-            'password' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
+            'password' => 'required|min:8',
+            'phone' => 'required|min:7',
+            'address' => 'required|min:8',
             'role' => 'required'
         ]);
         if($request->role == "Admin"){
@@ -88,15 +88,25 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $validate = $request->validate([
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+            'phone' => 'required|min:7',
+            'address' => 'required|min:8',
+            'role' => 'required'
+        ]);
+        $updatedUser = User::find($user->id);
+        $updatedUser->update($request->all());
+        return redirect()->route('admin.users.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
         //
     }
