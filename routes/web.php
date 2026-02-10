@@ -81,8 +81,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         Route::get('/edit/{user}', [UserController::class, 'edit'])->name('edit');
         Route::put('/edit/{user}', [UserController::class, 'update'])->name('update');
     });
-    Route::get('/', [UserController::class, 'index'])->name('index');
-    Route::post('/', [AdminController::class, 'login'])->name('login');
+    //Route::get('/', [UserController::class, 'index'])->name('index');
+    //Route::post('/', [AdminController::class, 'login'])->name('login');
 });
 
 require __DIR__.'/auth.php';
