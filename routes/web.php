@@ -77,6 +77,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         Route::get('/', [UserController::class, 'index'])->name('index');
         Route::get('/create', [UserController::class, 'create'])->name('create');
         Route::post('/create', [UserController::class, 'store'])->name('store');
+        Route::get('/{user}', [UserController::class, 'show'])->name('show');
+        Route::get('/edit/{user}', [UserController::class, 'edit'])->name('edit');
+        Route::put('/edit/{user}', [UserController::class, 'update'])->name('update');
     });
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::post('/', [AdminController::class, 'login'])->name('login');
