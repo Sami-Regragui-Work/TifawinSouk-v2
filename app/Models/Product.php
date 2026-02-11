@@ -6,6 +6,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'stock',
+        'image_path',
+        'categorie_id'
+    ];
+
+    // protected $attributes = [
+    //     'name' => 'x',
+    //     'description' => 'x',
+    //     'price' => 0,
+    //     'stock' => 0,
+    //     'image_path' => 'x',
+    //     'categorie_id' => 1,
+    // ];
+    public function categorie(){
+        return $this->belongsTo(Category::class);
+    }
     public function orderProducts()
     {
         return $this->belongsToMany(Order::class, 'order_products', 'product_id', 'order_id')->withPivot('quantity', 'price_at_purchase');
