@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-500 dark:text-gray-400 leading-tight">
             My Commandes
         </h2>
     </x-slot>
@@ -11,7 +11,7 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="px-6 py-4 border-b border-gray-200">
                         <h3 class="text-lg font-medium text-gray-900">
-                            {{ $orders->total() }} oder{{ $orders->total() > 1 ? 's' : '' }} found
+                            {{ $orders->total() }} order{{ $orders->total() > 1 ? 's' : '' }} found
                         </h3>
                     </div>
                     <div class="overflow-x-auto">
@@ -44,7 +44,13 @@
                         {!! $orders->appends(request()->query())->links() !!}
                     </div>
                 </div>
+            @else
+                <div class="text-center py-20">
+                    <h3 class="text-white">No orders yet!</h3>
+                    <a href="{{-- route('client.products.index') --}}" class="bg-blue-500 text-white px-4 py-2 rounded">Shop Now</a>
+                </div>
             @endif
+
         </div>
     </div>
 </x-app-layout>
